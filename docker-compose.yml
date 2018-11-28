@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  composer:
+    image: composer
+    volumes: ['./:/app']
+    restart: "no"
+
+  phpunit:
+    image: phpunit/phpunit:6.5.3
+    volumes: ['./:/app']
+    restart: "no"
