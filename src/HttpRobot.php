@@ -43,7 +43,7 @@ class HttpRobot
     {
         $response = $this->client->request('GET', $path);
 
-        return VALUES($response->getBody()->getContents(), $returns);
+        return static::values($response->getBody()->getContents(), $returns);
     }
 
     /**

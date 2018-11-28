@@ -1,6 +1,6 @@
 {
-  "name": "javanile/mysql-import",
-  "description": "Import SQL file from command-line",
+  "name": "javanile/http-robot",
+  "description": "Automated web page interactions",
   "version": "0.0.1",
   "license": "MIT",
   "type": "project",
@@ -13,7 +13,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/javanile/mysql-import"
+      "url": "https://github.com/javanile/http-robot"
     }
   ],
   "require-dev": {
@@ -21,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Javanile\\MysqlImport\\": "src"
+      "Javanile\\HttpRobot\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Javanile\\MysqlImport\\Tests\\": "tests"
+      "Javanile\\HttpRobot\\Tests\\": "tests"
     }
   },
   "require": {

@@ -2,10 +2,10 @@
 
 namespace Javanile\IpQueue\Tests;
 
-use Javanile\MysqlImport\MysqlImport;
+use Javanile\HttpRobot\HttpRobot;
 use PHPUnit\Framework\TestCase;
 
-class MysqlImportTest extends TestCase
+class HttpRobotTest extends TestCase
 {
     public function testGetApi()
     {
