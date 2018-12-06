@@ -2,12 +2,14 @@ version: '2'
 
 services:
 
-  composer:
-    image: composer
+  php:
+    build: .
     volumes: ['./:/app']
-    restart: "no"
+
+  composer:
+    extends: { service: php }
+    entrypoint: ['composer']
 
   phpunit:
-    image: phpunit/phpunit:6.5.3
-    volumes: ['./:/app']
-    restart: "no"
+    extends: { service: php }
+    entrypoint: ['./vendor/bin/phpunit']

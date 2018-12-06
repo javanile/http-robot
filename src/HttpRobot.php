@@ -7,11 +7,13 @@
  * @category   CategoryName
  * @package    PackageName
  * @author     Francesco Bianco
- * @copyright  2018 Javanile.org
+ * @copyright  2018 Javanile
  */
 
 namespace Javanile\HttpRobot;
 
+use DOMDocument;
+use DOMXPath;
 use GuzzleHttp\Client;
 
 class HttpRobot
