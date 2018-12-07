@@ -1,11 +1,11 @@
 <?php
 /**
- * foreground-check.php
+ * foreground-check.php.
  *
  * Check database before start container
  *
  * @category   CategoryName
- * @package    PackageName
+ *
  * @author     Francesco Bianco
  * @copyright  2018 Javanile
  */
@@ -34,11 +34,10 @@ class HttpRobot
     }
 
     /**
-     *
-     *
      * @param $client
      * @param $path
      * @param null $returns
+     *
      * @return array
      */
     public function get($path, $returns = null)
@@ -52,12 +51,14 @@ class HttpRobot
      * @param $path
      * @param null $params
      * @param null $returns
+     *
      * @return array
+     *
      * @internal param $client
      */
     public function post($path, $params = null, $returns = null)
     {
-        $response = $this->client->request('POST', $path, [ 'form_params' => $params ]);
+        $response = $this->client->request('POST', $path, ['form_params' => $params]);
 
         return static::values($response->getBody()->getContents(), $returns);
     }
@@ -65,6 +66,7 @@ class HttpRobot
     /**
      * @param $html
      * @param $returns
+     *
      * @return array
      */
     protected static function values($html, $returns = null)
