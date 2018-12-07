@@ -2,9 +2,9 @@
 
 namespace Javanile\IpQueue\Tests;
 
-use Javanile\HttpRobot\HttpRobot;
-use donatj\MockWebServer\Response;
 use donatj\MockWebServer\MockWebServer;
+use donatj\MockWebServer\Response;
+use Javanile\HttpRobot\HttpRobot;
 use PHPUnit\Framework\TestCase;
 
 class HttpRobotTest extends TestCase
@@ -14,7 +14,7 @@ class HttpRobotTest extends TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$server = new MockWebServer;
+        self::$server = new MockWebServer();
         self::$server->start();
         self::$server->setResponseOfPath('/form', new Response(
             file_get_contents(__DIR__.'/fixtures/form.html')
