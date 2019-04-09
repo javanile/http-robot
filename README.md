@@ -6,3 +6,15 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c5a06f1f03c43c692e6128a92f45080)](https://www.codacy.com/app/francescobianco/http-robot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=javanile/http-robot&amp;utm_campaign=Badge_Grade)
 
 
+```bash
+docker-compose run --rm composer install
+```
+
+```bash
+docker-compose run --rm phpunit tests
+```
+
+
+
+
+

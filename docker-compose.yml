@@ -1,15 +1,15 @@
-version: '2'
+version: '3'
 
 services:
 
-  php:
+  php: &php
     build: .
     volumes: ['./:/app']
 
   composer:
-    extends: { service: php }
+    <<: *php
     entrypoint: ['composer']
 
   phpunit:
-    extends: { service: php }
+    <<: *php
     entrypoint: ['./vendor/bin/phpunit']

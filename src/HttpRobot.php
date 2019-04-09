@@ -87,7 +87,32 @@ class HttpRobot
 
         $returnValues = [];
         foreach ($returns as $key) {
-            $returnValues[$key] = $xpath->query('//input[@name="'.$key.'"]/@value')->item(0)->nodeValue;
+            if ($key == '@html') {
+                $returnValues[$key] = $html;
+            } elseif ($key == '@text') {
+                $noStyles = preg_replace('#<style(.*?)>(.*?)</style>#ims', '', $html);
+                $noScripts = preg_replace('#<script(.*?)>(.*?)</script>#ims', '', $noStyles);
+                $noSpaces = preg_replace(
+                    '/^ /m',
+                    '',
+                    preg_replace(
+                        '/ \n/',
+                        '',
+                        preg_replace(
+                            '/[ \t]+/',
+                            ' ',
+                            preg_replace(
+                                '/[\r\n]+/',
+                                "\n",
+                                strip_tags($noScripts)
+                            )
+                        )
+                    )
+                );
+                $returnValues[$key] = trim($noSpaces);
+            } else {
+                $returnValues[$key] = $xpath->query('//input[@name="'.$key.'"]/@value')->item(0)->nodeValue;
+            }
         }
 
         libxml_use_internal_errors($prev);

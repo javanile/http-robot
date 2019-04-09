@@ -16,6 +16,9 @@ class HttpRobotTest extends TestCase
     {
         self::$server = new MockWebServer();
         self::$server->start();
+        self::$server->setResponseOfPath('/', new Response(
+            file_get_contents(__DIR__.'/fixtures/index.html')
+        ));
         self::$server->setResponseOfPath('/form', new Response(
             file_get_contents(__DIR__.'/fixtures/form.html')
         ));
@@ -50,7 +53,7 @@ class HttpRobotTest extends TestCase
 
         $this->assertEquals($robot->get('form', 'website'), 'www.mytestco.com');
         $this->assertEquals(
-            $robot->get('form', ['website', 'phone']),
+            $robot->get('/form', ['website', 'phone']),
             ['website' => 'www.mytestco.com', 'phone' => 9898878787]
         );
     }
@@ -64,8 +67,19 @@ class HttpRobotTest extends TestCase
 
         $this->assertEquals($robot->post('form', [], 'website'), 'www.mytestco.com');
         $this->assertEquals(
-            $robot->post('form', [], ['website', 'phone']),
+            $robot->post('/form', [], ['website', 'phone']),
             ['website' => 'www.mytestco.com', 'phone' => 9898878787]
         );
+    }
+
+    public function testTextValue()
+    {
+        $robot = new HttpRobot([
+            'base_uri' => self::$server->getServerRoot(),
+            'cookies'  => true,
+        ]);
+
+        $text = $robot->get('/', '@text');
+        $this->assertEquals($text, file_get_contents(__DIR__.'/fixtures/index.text'));
     }
 }
