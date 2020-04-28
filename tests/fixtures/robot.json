@@ -1,0 +1,8 @@
+{
+  "client": {
+    "base_uri": "http://localhost"
+  },
+  "pragma": [
+    ["get", "index.php?ad", ]
+  ]
+}
